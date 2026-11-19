@@ -8,7 +8,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { values } from "@/data/home";
 
 export const metadata = buildMetadata({
-  title: "About Veldriva",
+  title: "About Us | Technology Consulting Company",
   description:
     "Veldriva is a digital transformation and technology consulting company combining technology expertise with business perspective for organizations in the United States and Canada.",
   path: "/about",

@@ -9,7 +9,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { values } from "@/data/home";
 
 export const metadata = buildMetadata({
-  title: "Careers at Veldriva",
+  title: "Careers | Explore Opportunities",
   description:
     "Explore future opportunities with Veldriva, a digital transformation and technology consulting company serving the United States and Canada.",
   path: "/careers",

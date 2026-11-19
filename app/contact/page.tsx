@@ -8,7 +8,7 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { Button } from "@/components/ui/Button";
 
 export const metadata = buildMetadata({
-  title: "Contact Veldriva",
+  title: "Contact Us | Technology Consulting",
   description:
     "Tell Veldriva about your business goals, technical challenges or upcoming projects. We serve organizations across the United States and Canada.",
   path: "/contact",

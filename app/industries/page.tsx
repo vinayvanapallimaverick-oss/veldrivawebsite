@@ -10,7 +10,7 @@ import { industries } from "@/data/industries";
 import { getService } from "@/data/services";
 
 export const metadata = buildMetadata({
-  title: "Industries We Serve",
+  title: "Industry Technology Solutions",
   description:
     "Digital transformation and technology consulting for financial services, healthcare, retail, manufacturing, professional services and the public sector in the US and Canada.",
   path: "/industries",

@@ -8,15 +8,18 @@ export function buildMetadata(opts: {
   type?: "website" | "article";
   publishedTime?: string;
   noindex?: boolean;
+  /** Use the title exactly as given (skips the "| Veldriva" template). */
+  absoluteTitle?: boolean;
 }): Metadata {
   const url = abs(opts.path);
+  const socialTitle = opts.absoluteTitle ? opts.title : `${opts.title} | ${site.name}`;
   return {
-    title: opts.title,
+    title: opts.absoluteTitle ? { absolute: opts.title } : opts.title,
     description: opts.description,
     alternates: { canonical: url },
     robots: opts.noindex ? { index: false, follow: false } : undefined,
     openGraph: {
-      title: `${opts.title} | ${site.name}`,
+      title: socialTitle,
       description: opts.description,
       url,
       siteName: site.name,
@@ -26,7 +29,7 @@ export function buildMetadata(opts: {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${opts.title} | ${site.name}`,
+      title: socialTitle,
       description: opts.description,
     },
   };

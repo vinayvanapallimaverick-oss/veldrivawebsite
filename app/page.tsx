@@ -16,9 +16,10 @@ import { whyUs, outcomes } from "@/data/home";
 import { Check } from "lucide-react";
 
 export const metadata = buildMetadata({
-  title: "Digital Transformation & IT Consulting for the US and Canada",
+  title: "Veldriva | Digital Transformation & Technology Consulting",
+  absoluteTitle: true,
   description:
-    "Veldriva delivers digital transformation consulting, cloud, AI, data engineering and enterprise software solutions for businesses across the United States and Canada.",
+    "Veldriva delivers digital transformation, cloud modernization, AI automation, software development, and technology consulting services across the US and Canada.",
   path: "/",
 });
 

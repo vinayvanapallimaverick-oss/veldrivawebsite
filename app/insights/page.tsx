@@ -8,7 +8,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { articles, formatDate } from "@/data/articles";
 
 export const metadata = buildMetadata({
-  title: "Insights on Digital Transformation, Cloud, AI and Data",
+  title: "Technology Insights & Perspectives",
   description:
     "Perspectives from Veldriva on digital transformation, cloud modernization, responsible AI, data engineering and enterprise technology.",
   path: "/insights",

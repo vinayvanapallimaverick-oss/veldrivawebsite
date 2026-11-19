@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  alternates: { canonical: site.url },
+  // Canonicals are set per route via buildMetadata (do not inherit the homepage URL).
+  robots: process.env.VERCEL_ENV === "preview" ? { index: false, follow: false } : undefined,
   openGraph: {
     type: "website",
     siteName: site.name,
@@ -40,6 +41,7 @@ export const viewport: Viewport = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${site.url}/#organization`,
   name: site.name,
   url: site.url,
   logo: `${site.url}/images/logo.png`,
@@ -65,12 +67,24 @@ const organizationSchema = {
   ...(site.linkedin ? { sameAs: [site.linkedin] } : {}),
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  url: site.url,
+  name: site.name,
+  description: site.description,
+  inLanguage: "en-US",
+  publisher: { "@id": `${site.url}/#organization` },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body>
         <a href="#main" className="skip-link">Skip to content</a>
         <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
         <Header />
         <main id="main">{children}</main>
         <Footer />
