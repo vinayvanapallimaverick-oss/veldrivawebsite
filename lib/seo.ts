@@ -17,7 +17,8 @@ export function buildMetadata(opts: {
     title: opts.absoluteTitle ? { absolute: opts.title } : opts.title,
     description: opts.description,
     alternates: { canonical: url },
-    robots: opts.noindex ? { index: false, follow: false } : undefined,
+    // Preview deployments are never indexable; production is unaffected.
+    ...(opts.noindex || process.env.VERCEL_ENV === "preview" ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       title: socialTitle,
       description: opts.description,
