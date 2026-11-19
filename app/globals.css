@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* Veldriva — Burgundy & Soft Stone design tokens */
+:root {
+  --brand-primary: #512c38;
+  --brand-secondary: #96777b;
+  --background-primary: #faf8f6;
+  --background-secondary: #ede7e4;
+  --surface: #ffffff;
+  --text-primary: #512c38;
+  --text-secondary: #665d60;
+  --border: #e5dcda;
+  --button-hover: #3f202b;
+  --footer-background: #34232a;
+}
+
+@theme {
+  --color-navy: var(--text-primary);          /* headings */
+  --color-brand: var(--brand-primary);        /* primary actions, links, icons */
+  --color-brand-dark: var(--button-hover);
+  --color-muted: var(--brand-secondary);      /* decorative accents */
+  --color-eyebrow: #7d5f64;                   /* muted burgundy, darkened for AA text contrast */
+  --color-soft: #f5f1ef;                      /* warm stone panels */
+  --color-stone: var(--background-secondary);
+  --color-ice: var(--background-primary);     /* main soft stone background */
+  --color-cream: #ffffff;                     /* legacy token = surface white */
+  --color-slate: #6e6366;
+  --color-body: var(--text-secondary);
+  --color-line: var(--border);
+  --color-footer: var(--footer-background);
+  --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: 0 1px 2px rgba(81, 44, 56, 0.04), 0 4px 14px rgba(81, 44, 56, 0.04);
+  --shadow-lift: 0 2px 4px rgba(81, 44, 56, 0.05), 0 14px 30px rgba(81, 44, 56, 0.09);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+  body {
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  :focus-visible {
+    outline: 3px solid var(--brand-primary);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+.container-x {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-x { padding-inline: 2rem; }
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--brand-primary);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Light illustration motion */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -20; }
+}
+.float-slow { animation: float-y 8s ease-in-out infinite; }
+.flow-line { stroke-dasharray: 1.5 2.5; animation: dash-flow 4s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .float-slow, .flow-line { animation: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+
+/* Ticker */
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}
+.ticker { overflow: hidden; }
+.ticker-track { animation: ticker 55s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+
+/* Pulses & sequential highlight */
+@keyframes ring-pulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+.ring-pulse { animation: ring-pulse 3.6s ease-out infinite; transform-origin: center; }
+
+@keyframes step-glow {
+  0%, 14%, 100% { background-color: #fff; color: var(--brand-primary); border-color: var(--border); }
+  4%, 10% { background-color: var(--brand-primary); color: #fff; border-color: var(--brand-primary); }
+}
+.step-glow { animation: step-glow 10s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track, .ring-pulse, .step-glow { animation: none; }
+  .ticker { overflow-x: auto; }
+}
